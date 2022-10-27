@@ -1,0 +1,296 @@
+#APLIKACJE####################################################
+
+#Mailspring
+alt + e
+	mailspring
+
+#Htop
+super + h
+    urxvt 'htop task manager' -e htop
+
+#Vivaldi
+alt + b
+    vivaldi-stable
+
+#qtbrowser
+alt + h
+    qutebrowser
+
+#Urxvt
+alt + u
+    urxvt
+
+#Ranger
+alt + r
+    kitty -e ranger
+
+#Clipnotify
+alt + c
+    CM_LAUNCHER=rofi clipmenu
+
+#Kitty
+ alt + k
+    kitty   
+
+#Thunar
+alt + t
+    thunar
+
+#Pavucontrol
+super + v
+    pavucontrol
+
+#Pragha
+alt + m
+    kitty -e mocp --theme  yellow_red_theme --music-dir !/Muzyka
+
+#Termite
+super + Return
+    termite
+
+# screenshot screencast      
+alt + s
+	teiler
+
+# Qutebrowser
+alt + q 
+	qutebrowser
+
+#dmenu
+super + shift + d
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+
+
+# FreeOffice ./.config/yad/FreeOffice.sh
+alt + o
+      # libreoffice --writer
+	~/.config/yad/FreeOffice.sh	
+
+
+
+##############################################################
+#                          ROFI STAFF
+##############################################################
+
+# Rofi starter
+alt + g
+        ~/.scripts/run_start.sh	
+
+#Rofi locate
+alt + l	
+	xdg-open "$(locate home media | rofi -threads 0 -width 100 -dmenu -i -p "locate:")"	
+
+#Rofi launcher    rofi -modi drun,window,run,keys,ssh -show drun -show-icons -sidebar-mode -location 0 -width 35
+super + Tab
+	rofi  '#window \{ padding:30px; background: rgba(20,20,20,0.5);border:0px;\}' -width 80 -show combi 
+	
+#Rofi Active Tasks 
+super + F12
+	rofi -modi window -show window -show-icons -sidebar-mode
+
+#Bitwarden rofi 
+alt + p
+	/usr/bin/bwpyro -e all -w names
+
+
+###############################################################
+#                        SYSTEM 
+###############################################################
+
+
+#Reload bspwm
+super + shift + r
+	~/.config/bspwm/bspwmrc
+
+#kill
+super + shift + q
+	bspc node -c
+
+#Logout
+super + shift + x
+	bspc quit
+
+
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+
+#Oblogout
+super + x
+    oblogout
+
+#Oblogout
+super + Pause
+    oblogout
+
+#Oblogout
+ctrl + alt + Delete
+   oblogout
+
+#Xkill
+super + Escape
+    xkill
+
+#Hide polybar
+super + y
+    polybar-msg cmd toggle
+
+#Keyboard
+super + space
+		{setxkbmap pl, setxkbmap us, setxkbmap ru}
+
+
+#################################################################
+# MOVE WINDOWS
+#################################################################
+
+
+#Move window to selected desktop FOR QWERTY KEYBOARDS
+#super + shift + {1-9,0}
+#    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}
+#    #id=$(bspc query -N -n); bspc node -d ^{1-9,10}}
+
+# focus or send to a desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# Expand tiled space
+alt + shift + {h,j,k,l}
+	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+
+
+#Focus selected desktop
+alt + Tab
+	bspc desktop -f '^{1-9,10}'
+
+	#Focus selected desktop
+alt + shift + Tab
+	bspc desktop -f '^{9-1,10}'
+
+#Rotate desktop
+alt + space
+	bspc node @/ --rotate {90,-90}
+
+
+ #	Move floating window
+super + alt + {_,shift + }{Left,Down,Up,Right}
+	~/.config/bspwm/scripts/move-window {_,edge-}{west,south,north,east}
+
+#Focus selected desktop FOR QWERTY KEYBOARDS
+super + {1-9,0}
+	bspc desktop -f '^{1-9,10}'
+
+
+# Focus/swap windows by direction
+super + {_,shift + }{h,j,k,l}
+	bspc node --{focus,swap} {west,south,north,east}
+
+# Flip layout vertically/horizontally
+super + {_,shift + }a
+	bspc node @/ --flip {vertical,horizontal}
+
+#  Move window to next/previous MONITOR  ######
+
+# move window to west/east monitor
+super + shift + {comma,period}
+    bspc node --to-monitor {west,east} -f
+
+#  Focus Next MONITOR  ########################		
+
+# focus west/east monitor
+super + {comma,period}
+    bspc monitor -f {west,east}
+
+# Focus next/previous window
+super + Left
+	bspc node --focus west
+
+# Focus next/previous window
+super + Right
+	bspc node --focus east
+
+# Focus Up window
+super + Up
+	bspc node --focus north
+
+# Focus Down window
+super + Down
+	bspc node --focus south
+
+
+# Focus/swap windows by direction
+super + ctrl + {Left,Down,Up,Right}
+	bspc node --{focus} {west,south,north,east}
+
+# Contract tiled space
+super + ctrl + {h,j,k,l}
+	bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+
+# Preselect the splitting area for next window on leaf/parent
+super + ctrl + {u,i,o,p}
+	bspc node --presel-dir \~{west,south,north,east}
+
+# Define splitting ratio for next window on leaf/parent
+super + ctrl + {_,shift +}{1-9}
+	bspc node {_,@/} --presel-ratio 0.{1-9}
+
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+	  
+
+# alternate between tiled & monocle
+super + m
+	bspc desktop -l next
+
+
+# swap the current node and biggest node
+super + g
+	bspc node -s biggest
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen} 
+
+
+# focus next/previous desktop in current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+###################################################################
+#                            HELP                                  
+###################################################################
+
+# bspwm System Help
+super + F1
+       ./.config/yad/bspwm_help.sh
+
+ # bspwm Keybindings
+super + F2
+	~/.config/bspwm/scripts/show_help.sh
+
+# Kitty Keybindings
+super + F3
+	~/.config/bspwm/scripts/kitty_help.sh
+
+# Ranger Keybindings
+super + F4
+	~/.config/bspwm/scripts/ranger_help.sh
+	
+# UZBL Keybindings
+super + F5
+	~/.config/bspwm/scripts/uzbl_help.sh
+
+# Zathura Keybindings
+super + F6
+	~/.config/bspwm/scripts/zathura_help.sh
