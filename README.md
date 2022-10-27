@@ -1,1 +1,2 @@
-# dot
+# Personal dot files
+
