@@ -1,2 +1,7 @@
-# Personal dot files
-
+# Ussage
+```
+stow -vnSt ~ */
+    -n dry-trun
+    -S make symbolink link
+    -D remove symbolic link
+```
