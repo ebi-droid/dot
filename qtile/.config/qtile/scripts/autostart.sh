@@ -34,23 +34,37 @@ function run {
 
 #starting utility applications at boot time
 run clipnotify &
+
 #Clipmenu
 pkill clipmenud
 run clipmenud &
 
 #starting utility applications at boot time
 run variety &
+
+
 run nm-applet &
 run pamac-tray &
 run xfce4-power-manager &
+
 numlockx on &
 blueberry-tray &
+
+#Transparency 
 picom --config $HOME/.config/qtile/scripts/picom.conf &
+
+#GPG pass input tool 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+#Notifications
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
+
+#Screen setup
+xrandr $HOME/.config/qtile/scripts/ekrany.sh &
 
 #starting user applications at boot time
 run volumeicon &
+
 #run discord &
 #nitrogen --restore &
 #run caffeine -a &

@@ -87,3 +87,6 @@ source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/zsh-auto-notify/auto-notify.plugin.zsh
 #Aliases
 source ~/.config/zsh/aliases.sh
+#helm completion
+source ~/.config/zsh/completions/_helm
+#

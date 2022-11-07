@@ -1,4 +1,4 @@
-# Ussage
+# Usage
 ```
 stow -vnSt ~ */
     -n dry-trun
