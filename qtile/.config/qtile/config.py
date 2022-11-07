@@ -443,6 +443,12 @@ def init_widgets_list():
                          update_interval = 5,
                          background = colors[1]
                          ),
+                widget.Sep(
+                        linewidth = 1,
+                         padding = 10,
+                         foreground = colors[2],
+                         background = colors[1]
+                         ),
                # # battery option 2  from Qtile
                # widget.Sep(
                #          linewidth = 1,
@@ -470,7 +476,7 @@ def init_widgets_list():
                         fill_color = colors[4],
                         graph_color = colors[8],
                         background = colors[1],
-                        foreground = colors[6],
+                        foreground = colors[5],
                         border_width = 1,
                         line_width = 1,
                         frequency = 1,
